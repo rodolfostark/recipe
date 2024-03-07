@@ -7,7 +7,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class RecipeService {
   constructor(private readonly prisma: PrismaService) { }
   create(createRecipeDto: CreateRecipeDto) {
-    return 'This action adds a new recipe';
+    return this.prisma.recipe.create({
+      data: createRecipeDto,
+    });
   }
 
   async findAll() {
